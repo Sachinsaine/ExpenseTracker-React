@@ -1,10 +1,13 @@
 import "./App.css";
-import { Navbar } from "./components/Navbar";
+import { Dashboard } from "./components/Dashboard";
+import { ContextProvider } from "./context/ContexProvider";
 
 function App() {
   return (
     <>
-      <Navbar />
+      <ContextProvider>
+        <Dashboard />
+      </ContextProvider>
     </>
   );
 }

@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
   --paper: #f4f0e6;
   --card: #fbf9f3;
@@ -61,13 +63,13 @@ h3 {
   margin: 0;
 }
 
-button,
+/* button,
 input,
 select {
   font-family: inherit;
   font-size: inherit;
   color: inherit;
-}
+} */
 
 button {
   cursor: pointer;

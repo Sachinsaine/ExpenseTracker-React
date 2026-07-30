@@ -22,7 +22,7 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  padding: 16px max(24px, calc(50% - 516px));
+  padding: 16px max(24px, calc(50% - 698px));
   background: rgba(244, 240, 230, 0.72);
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
