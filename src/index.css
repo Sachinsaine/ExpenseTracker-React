@@ -1,111 +1,113 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --paper: #f4f0e6;
+  --card: #fbf9f3;
+  --ink: #1e2b28;
+  --ink-soft: #5a6a63;
+  --line: #ddd5bf;
+  --line-strong: #c7bc9d;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  --accent-green: #2f6b4f;
+  --accent-green-soft: #dce8e0;
+  --accent-rust: #a1543a;
+  --accent-rust-soft: #f0ded6;
+  --accent-gold: #b8892f;
+  --accent-gold-soft: #efe3c4;
+  --accent-plum: #6a4a63;
+  --accent-slate: #3f5a6b;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-body: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", monospace;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --shadow-card:
+    0 1px 2px rgba(30, 43, 40, 0.04), 0 8px 24px -12px rgba(30, 43, 40, 0.18);
+
+  color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-body {
-  margin: 0;
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+* {
   box-sizing: border-box;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
+body {
+  background: var(--paper);
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(30, 43, 40, 0.05) 1px,
+    transparent 0
+  );
+  background-size: 22px 22px;
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
+
+#root {
+  min-height: 100vh;
 }
-p {
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
   margin: 0;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+button,
+input,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-green);
+  outline-offset: 2px;
+}
+
+/* Category tint utility, shared across summary bars and list tags */
+[data-category="Food"] {
+  --cat: var(--accent-rust);
+  --cat-soft: var(--accent-rust-soft);
+}
+[data-category="Transport"] {
+  --cat: var(--accent-slate);
+  --cat-soft: #dde5ea;
+}
+[data-category="Housing"] {
+  --cat: var(--accent-plum);
+  --cat-soft: #e6dde3;
+}
+[data-category="Utilities"] {
+  --cat: var(--accent-gold);
+  --cat-soft: var(--accent-gold-soft);
+}
+[data-category="Entertainment"] {
+  --cat: #8a4b8f;
+  --cat-soft: #ecdcec;
+}
+[data-category="Health"] {
+  --cat: var(--accent-green);
+  --cat-soft: var(--accent-green-soft);
+}
+[data-category="Shopping"] {
+  --cat: #b25a8c;
+  --cat-soft: #f1dbe7;
+}
+[data-category="Other"] {
+  --cat: var(--ink-soft);
+  --cat-soft: #e3e1d8;
 }

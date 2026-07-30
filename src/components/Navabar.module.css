@@ -1,0 +1,250 @@
+/* Navbar.module.css
+   Usage in Navbar.jsx:
+     import styles from '../styles/Navbar.module.css';
+     <header className={`${styles.navbar} ${isScrolled ? styles.scrolled : ''}`}>
+       <a className={styles.brand}>...
+       <button className={`${styles.link} ${isActive ? styles.linkActive : ''}`}>...
+   Design tokens (--ink, --paper, --accent-green, etc.) come from the global
+   src/index.css :root block — CSS custom properties aren't scoped by
+   CSS Modules, so they resolve normally here.
+*/
+
+.spacer {
+  height: 84px;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px max(24px, calc(50% - 516px));
+  background: rgba(244, 240, 230, 0.72);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid rgba(199, 188, 157, 0.55);
+  transition:
+    padding 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.scrolled {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: rgba(244, 240, 230, 0.9);
+  box-shadow: 0 8px 24px -16px rgba(30, 43, 40, 0.35);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.mark {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 26px;
+  width: 26px;
+  padding: 4px;
+  border-radius: 8px;
+  background: var(--ink);
+  transition: transform 0.25s ease;
+}
+
+.brand:hover .mark {
+  transform: rotate(-6deg) scale(1.05);
+}
+
+.markLine {
+  width: 4px;
+  background: var(--accent-green);
+  border-radius: 1px;
+}
+
+.markLine:nth-child(1) {
+  height: 45%;
+  background: var(--accent-gold);
+}
+
+.markLine:nth-child(2) {
+  height: 100%;
+}
+
+.markLine:nth-child(3) {
+  height: 70%;
+  background: var(--accent-rust);
+}
+
+.titles {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  line-height: 1.1;
+}
+
+.title {
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 11px;
+  color: var(--ink-soft);
+  font-style: italic;
+  font-family: var(--font-display);
+}
+
+.center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+.link {
+  border: none;
+  background: transparent;
+  padding: 7px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  transition: all 0.15s ease;
+}
+
+.link:hover {
+  color: var(--ink);
+}
+
+.linkActive {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1.1;
+  padding-right: 12px;
+  border-right: 1px solid var(--line-strong);
+}
+
+.statLabel {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.statValue {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.iconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  background: var(--card);
+  color: var(--ink-soft);
+  transition: all 0.15s ease;
+}
+
+.iconBtn:hover {
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+}
+
+.iconBtn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  border-radius: 999px;
+  padding: 9px 16px 9px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  transition:
+    background 0.15s ease,
+    transform 0.1s ease;
+}
+
+.cta:hover {
+  background: var(--accent-green);
+}
+
+.cta:active {
+  transform: translateY(1px);
+}
+
+.cta svg {
+  width: 15px;
+  height: 15px;
+}
+
+@media (max-width: 860px) {
+  .center,
+  .stat {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .subtitle {
+    display: none;
+  }
+
+  .cta span {
+    display: none;
+  }
+
+  .cta {
+    padding: 9px;
+  }
+}
