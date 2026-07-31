@@ -31,6 +31,7 @@ export const ExpenseForm = () => {
                 className={styles.input}
                 name="title"
                 value={state.expense.title}
+                placeholder="Enter title"
                 onChange={(e) =>
                   dispatch({
                     type: "INPUT",
@@ -48,6 +49,7 @@ export const ExpenseForm = () => {
                 className={styles.input}
                 name="amount"
                 value={state.expense.amount}
+                placeholder="$99.00"
                 onChange={(e) =>
                   dispatch({
                     type: "INPUT",
@@ -63,8 +65,7 @@ export const ExpenseForm = () => {
               <label htmlFor="" className={styles.label}>
                 Category
               </label>
-              <input
-                type="text"
+              <select
                 className={styles.input}
                 name="category"
                 value={state.expense.category}
@@ -74,7 +75,18 @@ export const ExpenseForm = () => {
                     payload: { name: e.target.name, value: e.target.value },
                   })
                 }
-              />
+                id=""
+              >
+                <option value="Select Category">Select Category</option>
+                <option value="Food">Food</option>
+                <option value="Transport">Transport</option>
+                <option value="Housing">Housing</option>
+                <option value="Utilities">Utilities</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Health">Health</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Other">Other</option>
+              </select>
             </div>
             <div className={styles.field}>
               <label htmlFor="" className={styles.label}>
@@ -97,6 +109,7 @@ export const ExpenseForm = () => {
 
           <button
             type="submit"
+            disabled={Object.values(state.expense).some((input) => !input)}
             className={styles.submit}
             onClick={handleSubmit}
           >

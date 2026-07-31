@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast";
 import "./App.css";
 import { Dashboard } from "./components/Dashboard";
 import { ContextProvider } from "./context/ContexProvider";
@@ -7,6 +8,7 @@ function App() {
     <>
       <ContextProvider>
         <Dashboard />
+        <Toaster />
       </ContextProvider>
     </>
   );

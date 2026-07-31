@@ -1,12 +1,9 @@
-/* ExpenseList.module.css
-   Relies on tokens from index.css :root, including the [data-category]
-   color variables (--cat, --cat-soft) already defined there. */
-
 .card {
   background: var(--card, #fbf9f3);
   border: 1px solid var(--line, #ddd5bf);
   border-radius: 16px;
   padding: 24px 26px 12px;
+  margin-bottom: 20px;
   box-shadow:
     0 1px 2px rgba(30, 43, 40, 0.04),
     0 8px 24px -12px rgba(30, 43, 40, 0.18);
@@ -131,6 +128,7 @@
 
 .delete:hover {
   color: var(--accent-rust, #a1543a);
+  background-color: #ffe0d5;
 }
 
 @media (max-width: 640px) {

@@ -30,6 +30,14 @@ const reducer = (state, action) => {
         expense: initialInput,
       };
 
+    case "REMOVE_EXPENSE":
+      return {
+        ...state,
+        allExpenses: [
+          ...state.allExpenses.filter((item) => item.id !== action.payload),
+        ],
+      };
+
     default:
       return state;
   }
