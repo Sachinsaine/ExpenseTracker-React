@@ -6,6 +6,23 @@ import toast from "react-hot-toast";
 export const ExpenseList = () => {
   const { state, dispatch } = useContext(ExpenseContext);
 
+  const getSelectedCategory =
+    state.selectedCategory === "All"
+      ? state.allExpenses
+      : state.allExpenses.filter(
+          (item) => item.category === state.selectedCategory,
+        );
+
+  const displayedExpenses = [...getSelectedCategory];
+
+  if (state.sortByAmount === "Highest amount") {
+    displayedExpenses.sort((a, b) => b.amount - a.amount);
+  }
+
+  if (state.sortByAmount === "Lowest amount") {
+    displayedExpenses.sort((a, b) => a.amount - b.amount);
+  }
+
   return (
     <div className={styles.card}>
       <div className={styles.header}>
@@ -34,8 +51,14 @@ export const ExpenseList = () => {
           </label>
           <label className={styles.filterField}>
             <span>Sort</span>
-            <select>
-              <option>Newest first</option>
+            <select
+              onChange={(e) =>
+                dispatch({ type: "SORT", payload: e.target.value })
+              }
+            >
+              <option value="All">All</option>
+              <option value="Highest amount">Highest amount</option>
+              <option value="Lowest amount">Lowest amount</option>
             </select>
           </label>
         </div>
@@ -50,7 +73,7 @@ export const ExpenseList = () => {
       </div>
 
       <ul className={styles.items}>
-        {state.allExpenses.map((item) => {
+        {displayedExpenses.map((item) => {
           return (
             <li className={styles.item}>
               <span className={styles.category} data-category={item.category}>
@@ -62,12 +85,10 @@ export const ExpenseList = () => {
               <button
                 type="button"
                 className={styles.delete}
-                onClick={() =>
-                  dispatch(
-                    { type: "REMOVE_EXPENSE", payload: item.id },
-                    toast.error("Ledger has been removed."),
-                  )
-                }
+                onClick={() => {
+                  (dispatch({ type: "REMOVE_EXPENSE", payload: item.id }),
+                    toast.error("Ledger has been removed."));
+                }}
               >
                 ✕
               </button>

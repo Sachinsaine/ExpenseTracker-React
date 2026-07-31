@@ -49,7 +49,7 @@ export const ExpenseForm = () => {
                 className={styles.input}
                 name="amount"
                 value={state.expense.amount}
-                placeholder="$99.00"
+                placeholder="$ 0.00"
                 onChange={(e) =>
                   dispatch({
                     type: "INPUT",

@@ -10,6 +10,8 @@ const initialInput = {
 const initialState = {
   expense: initialInput,
   allExpenses: [],
+  selectedCategory: "All",
+  sortByAmount: "default",
 };
 
 const reducer = (state, action) => {
@@ -36,6 +38,18 @@ const reducer = (state, action) => {
         allExpenses: [
           ...state.allExpenses.filter((item) => item.id !== action.payload),
         ],
+      };
+
+    case "SELECT_BY_CATEGORY":
+      return {
+        ...state,
+        selectedCategory: action.payload,
+      };
+
+    case "SORT":
+      return {
+        ...state,
+        sortByAmount: action.payload,
       };
 
     default:
