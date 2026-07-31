@@ -1,0 +1,104 @@
+.card {
+  background: var(--ink, #1e2b28);
+  color: var(--paper, #f4f0e6);
+  border-radius: 16px;
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 342px;
+  box-shadow:
+    0 1px 2px rgba(30, 43, 40, 0.04),
+    0 8px 24px -12px rgba(30, 43, 40, 0.18);
+}
+
+.headline {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(244, 240, 230, 0.16);
+}
+
+.eyebrow {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(244, 240, 230, 0.6);
+}
+
+.total {
+  font-family: var(--font-mono, monospace);
+  font-size: 34px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.count {
+  font-size: 12px;
+  color: rgba(244, 240, 230, 0.55);
+}
+
+.breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rowLabels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12.5px;
+}
+
+.rowLabels span:first-child {
+  color: rgba(244, 240, 230, 0.85);
+}
+
+.rowLabels span:last-child {
+  font-family: var(--font-mono, monospace);
+  color: rgba(244, 240, 230, 0.65);
+}
+
+.barTrack {
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(244, 240, 230, 0.12);
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+.barGold {
+  background: var(--accent-gold, #b8892f);
+}
+
+.barRust {
+  background: var(--accent-rust, #a1543a);
+}
+
+.barSlate {
+  background: #3f5a6b;
+}
+
+.note {
+  margin: 0;
+  font-size: 12.5px;
+  color: rgba(244, 240, 230, 0.7);
+  padding-top: 12px;
+  border-top: 1px solid rgba(244, 240, 230, 0.16);
+}
+
+.note strong {
+  color: var(--paper, #f4f0e6);
+}

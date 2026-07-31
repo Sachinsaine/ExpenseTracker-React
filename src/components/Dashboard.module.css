@@ -1,0 +1,60 @@
+/* Dashboard.module.css
+   Relies on the global tokens (--ink, --paper, --accent-green, etc.)
+   defined in index.css :root. */
+
+.page {
+  min-height: 100vh;
+  background: var(--paper);
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(30, 43, 40, 0.05) 1px,
+    transparent 0
+  );
+  background-size: 22px 22px;
+}
+
+.content {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 0px 34px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px 0;
+  flex-wrap: wrap;
+}
+
+.totalCard {
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 16px;
+  padding: 18px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 220px;
+}
+
+.totalLabel {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(244, 240, 230, 0.6);
+}
+
+.totalValue {
+  font-family: var(--font-mono);
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.expenseListCont {
+  max-width: 1080px;
+  margin: 0 auto;
+}

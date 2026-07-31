@@ -27,6 +27,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         allExpenses: [...state.allExpenses, action.payload],
+        expense: initialInput,
       };
 
     default:

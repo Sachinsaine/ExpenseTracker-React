@@ -1,17 +1,21 @@
 import { ExpenseForm } from "./ExpenseForm";
 import { Navbar } from "./Navbar";
+import styles from "./Dashboard.module.css";
+import { ExpenseSummary } from "./ExpenseSummary";
+import { ExpenseList } from "./ExpenseList";
 
 export const Dashboard = () => {
   return (
-    <div>
+    <div className={styles.page}>
       <Navbar />
-      <div>
-        <div className="flex items-center justify-between p-6">
+      <div className={styles.content}>
+        <div className={styles.row}>
           <ExpenseForm />
-          <div>
-            <h2>Total spent US$156.70</h2>
-          </div>
+          <ExpenseSummary />
         </div>
+      </div>
+      <div className={styles.expenseListCont}>
+        <ExpenseList />
       </div>
     </div>
   );
