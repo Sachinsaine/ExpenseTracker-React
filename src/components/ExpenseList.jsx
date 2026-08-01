@@ -73,28 +73,32 @@ export const ExpenseList = () => {
       </div>
 
       <ul className={styles.items}>
-        {displayedExpenses.map((item) => {
-          return (
-            <li className={styles.item}>
-              <span className={styles.category} data-category={item.category}>
-                {item.category}
-              </span>
-              <div className={styles.title}>{item.title}</div>
-              <div className={styles.date}>{item.date}</div>
-              <div className={styles.amount}>{item.amount}</div>
-              <button
-                type="button"
-                className={styles.delete}
-                onClick={() => {
-                  (dispatch({ type: "REMOVE_EXPENSE", payload: item.id }),
-                    toast.error("Ledger has been removed."));
-                }}
-              >
-                ✕
-              </button>
-            </li>
-          );
-        })}
+        {displayedExpenses.length === 0 ? (
+          <h1 className={styles.empty}>No expenses found</h1>
+        ) : (
+          displayedExpenses.map((item) => {
+            return (
+              <li className={styles.item}>
+                <span className={styles.category} data-category={item.category}>
+                  {item.category}
+                </span>
+                <div className={styles.title}>{item.title}</div>
+                <div className={styles.date}>{item.date}</div>
+                <div className={styles.amount}>{item.amount}</div>
+                <button
+                  type="button"
+                  className={styles.delete}
+                  onClick={() => {
+                    (dispatch({ type: "REMOVE_EXPENSE", payload: item.id }),
+                      toast.error("Ledger has been removed."));
+                  }}
+                >
+                  ✕
+                </button>
+              </li>
+            );
+          })
+        )}
       </ul>
     </div>
   );

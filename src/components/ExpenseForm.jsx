@@ -82,7 +82,7 @@ export const ExpenseForm = () => {
                 <option value="Transport">Transport</option>
                 <option value="Housing">Housing</option>
                 <option value="Utilities">Utilities</option>
-                <option value="Entertainment">Entertainment</option>
+                {/* <option value="Entertainment">Entertainment</option> */}
                 <option value="Health">Health</option>
                 <option value="Shopping">Shopping</option>
                 <option value="Other">Other</option>

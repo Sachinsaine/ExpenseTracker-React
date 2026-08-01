@@ -41,8 +41,8 @@
 }
 
 .breakdown {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 12px;
 }
 
@@ -91,6 +91,17 @@
   background: #3f5a6b;
 }
 
+.barGreen {
+  background-color: #2f6b4f;
+}
+
+.barDarkPink {
+  background-color: #b25a8c;
+}
+
+.barHousing {
+  background-color: #6a4a63;
+}
 .note {
   margin: 0;
   font-size: 12.5px;

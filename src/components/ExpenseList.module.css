@@ -130,6 +130,16 @@
   color: var(--accent-rust, #a1543a);
   background-color: #ffe0d5;
 }
+.empty {
+  padding: 40px 4px 32px;
+  text-align: center;
+  color: var(--ink-soft, #5a6a63);
+  font-size: 15px;
+  font-style: italic;
+  font-family: var(--font-display, serif);
+  font-weight: 500;
+  margin: 0;
+}
 
 @media (max-width: 640px) {
   .columns {

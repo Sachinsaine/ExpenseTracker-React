@@ -40,9 +40,7 @@ export const Navbar = () => {
         <div className={styles.actions}>
           <div className={styles.stat}>
             <span className={styles.statLabel}>This month</span>
-            <span
-              className={styles.statValue}
-            >{`$${Math.floor(total.toFixed(2))}.00`}</span>
+            <span className={styles.statValue}>{`$${total.toFixed(2)}`}</span>
           </div>
 
           <button type="button" className={styles.iconBtn} aria-label="Search">
