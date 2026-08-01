@@ -1,10 +1,9 @@
 import { useContext } from "react";
 import { ExpenseContext } from "../context/ExpenseContext";
 import styles from "./ExpenseList.module.css";
-import toast from "react-hot-toast";
-
+import AlertDialog from "./AlertDialog"; // adjust the path
 export const ExpenseList = () => {
-  const { state, dispatch } = useContext(ExpenseContext);
+  const { state, dispatch, setOpen, setDeletedId } = useContext(ExpenseContext);
 
   const getSelectedCategory =
     state.selectedCategory === "All"
@@ -22,6 +21,11 @@ export const ExpenseList = () => {
   if (state.sortByAmount === "Lowest amount") {
     displayedExpenses.sort((a, b) => a.amount - b.amount);
   }
+
+  const handleOpen = (expenseId) => {
+    setDeletedId(expenseId);
+    setOpen(true);
+  };
 
   return (
     <div className={styles.card}>
@@ -43,7 +47,7 @@ export const ExpenseList = () => {
               <option value="Transport">Transport</option>
               <option value="Housing">Housing</option>
               <option value="Utilities">Utilities</option>
-              <option value="Entertainment">Entertainment</option>
+              {/* <option value="Entertainment">Entertainment</option> */}
               <option value="Health">Health</option>
               <option value="Shopping">Shopping</option>
               <option value="Other">Other</option>
@@ -88,10 +92,7 @@ export const ExpenseList = () => {
                 <button
                   type="button"
                   className={styles.delete}
-                  onClick={() => {
-                    (dispatch({ type: "REMOVE_EXPENSE", payload: item.id }),
-                      toast.error("Ledger has been removed."));
-                  }}
+                  onClick={() => handleOpen(item.id)}
                 >
                   ✕
                 </button>
@@ -100,6 +101,7 @@ export const ExpenseList = () => {
           })
         )}
       </ul>
+      <AlertDialog open={handleOpen} />
     </div>
   );
 };

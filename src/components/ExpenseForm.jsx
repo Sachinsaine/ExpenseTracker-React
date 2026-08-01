@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { ExpenseContext } from "../context/ExpenseContext";
 import styles from "./ExpenseForm.module.css";
+import toast from "react-hot-toast";
 
 export const ExpenseForm = () => {
   const { state, dispatch } = useContext(ExpenseContext);
@@ -12,6 +13,7 @@ export const ExpenseForm = () => {
       type: "ADD_EXPENSE",
       payload: { id: Date.now(), ...state.expense },
     });
+    toast.success("Expense Added Successfully");
   };
 
   return (

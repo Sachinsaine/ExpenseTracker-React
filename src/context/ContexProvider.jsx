@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { ExpenseContext } from "./ExpenseContext";
 
 const initialInput = {
@@ -7,9 +7,12 @@ const initialInput = {
   category: "",
   date: "",
 };
+
+const saveExpense = JSON.parse(localStorage.getItem("expense") || "[]");
+
 const initialState = {
   expense: initialInput,
-  allExpenses: [],
+  allExpenses: saveExpense,
   selectedCategory: "All",
   sortByAmount: "default",
 };
@@ -59,8 +62,16 @@ const reducer = (state, action) => {
 
 export const ContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [open, setOpen] = useState(false);
+  const [deleteId, setDeletedId] = useState(0);
+
+  useEffect(() => {
+    localStorage.setItem("expense", JSON.stringify(state.allExpenses));
+  }, [state.allExpenses]);
   return (
-    <ExpenseContext.Provider value={{ state, dispatch }}>
+    <ExpenseContext.Provider
+      value={{ state, dispatch, open, setOpen, deleteId, setDeletedId }}
+    >
       {children}
     </ExpenseContext.Provider>
   );

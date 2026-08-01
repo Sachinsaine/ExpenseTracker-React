@@ -6,7 +6,10 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  min-width: 342px;
+  width: 100%;
+  max-width: 380px;
+  min-height: 390px;
+  box-sizing: border-box;
   box-shadow:
     0 1px 2px rgba(30, 43, 40, 0.04),
     0 8px 24px -12px rgba(30, 43, 40, 0.18);
@@ -43,7 +46,7 @@
 .breakdown {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  gap: 14px;
 }
 
 .row {
@@ -55,7 +58,9 @@
 .rowLabels {
   display: flex;
   justify-content: space-between;
-  font-size: 12.5px;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
 }
 
 .rowLabels span:first-child {
@@ -68,6 +73,7 @@
 }
 
 .barTrack {
+  width: 100%;
   height: 6px;
   border-radius: 999px;
   background: rgba(244, 240, 230, 0.12);
@@ -77,14 +83,15 @@
 .barFill {
   height: 100%;
   border-radius: 999px;
+  transition: width 0.35s ease;
 }
 
 .barGold {
-  background: var(--accent-gold, #b8892f);
+  background: #b8892f;
 }
 
 .barRust {
-  background: var(--accent-rust, #a1543a);
+  background: #a1543a;
 }
 
 .barSlate {
@@ -92,24 +99,117 @@
 }
 
 .barGreen {
-  background-color: #2f6b4f;
+  background: #2f6b4f;
 }
 
 .barDarkPink {
-  background-color: #b25a8c;
+  background: #b25a8c;
 }
 
 .barHousing {
-  background-color: #6a4a63;
+  background: #6a4a63;
 }
+
 .note {
   margin: 0;
   font-size: 12.5px;
   color: rgba(244, 240, 230, 0.7);
-  padding-top: 12px;
+  padding-top: 14px;
   border-top: 1px solid rgba(244, 240, 230, 0.16);
 }
 
 .note strong {
   color: var(--paper, #f4f0e6);
+}
+
+/* ===========================
+   Tablet
+=========================== */
+
+@media (max-width: 992px) {
+  .card {
+    max-width: 100%;
+    padding: 22px;
+  }
+
+  .total {
+    font-size: 30px;
+  }
+
+  .breakdown {
+    gap: 12px;
+  }
+}
+
+/* ===========================
+   Mobile
+=========================== */
+
+@media (max-width: 768px) {
+  .card {
+    max-width: 100%;
+    width: 100%;
+    padding: 20px;
+    min-width: unset;
+  }
+
+  .headline {
+    gap: 6px;
+  }
+
+  .total {
+    font-size: 28px;
+  }
+
+  .breakdown {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .rowLabels {
+    font-size: 14px;
+  }
+
+  .barTrack {
+    height: 8px;
+  }
+
+  .note {
+    font-size: 14px;
+  }
+}
+
+/* ===========================
+   Small Mobile
+=========================== */
+
+@media (max-width: 480px) {
+  .card {
+    padding: 18px;
+  }
+
+  .eyebrow {
+    font-size: 10px;
+  }
+
+  .total {
+    font-size: 26px;
+  }
+
+  .count {
+    font-size: 13px;
+  }
+
+  .rowLabels {
+    font-size: 13px;
+  }
+
+  .barTrack {
+    height: 7px;
+  }
+
+  .note {
+    font-size: 13px;
+    line-height: 1.5;
+  }
 }

@@ -3,11 +3,13 @@
   background: var(--card, #fbf9f3);
   border: 1px solid var(--line, #ddd5bf);
   border-radius: 16px;
-  min-width: 682px;
+  width: 100%;
+  max-width: 720px;
   box-shadow:
     0 1px 2px rgba(30, 43, 40, 0.04),
     0 8px 24px -12px rgba(30, 43, 40, 0.18);
-  padding: 26px 26px 24px;
+  padding: 26px;
+  box-sizing: border-box;
 }
 
 .card::after {
@@ -29,80 +31,157 @@
 
 .eyebrow {
   display: block;
-  font-family: var(--font-mono, monospace);
+  font-family: monospace;
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--accent-green, #2f6b4f);
-  margin-bottom: 2px;
+  color: #2f6b4f;
+  margin-bottom: 4px;
 }
 
 .heading {
-  font-family: var(--font-display, serif);
-  font-size: 21px;
-  font-weight: 600;
-  color: var(--ink, #1e2b28);
-  margin: 0 0 4px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e2b28;
+  margin-bottom: 20px;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  margin-top: 18px;
+  gap: 20px;
 }
 
 .row {
   display: flex;
-  gap: 14px;
+  gap: 16px;
 }
 
 .field {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 6px;
 }
 
 .label {
-  font-size: 12px;
-  color: var(--ink-soft, #5a6a63);
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #55635d;
 }
 
 .input {
-  border: 1px solid var(--line-strong, #c7bc9d);
-  border-radius: 8px;
-  padding: 11px 13px;
-  background: #fff;
-  font-size: 14px;
-  color: var(--ink, #1e2b28);
-  transition: border-color 0.15s ease;
+  width: 100%;
+  padding: 13px 16px;
+  border: 1px solid #d8c7a0;
+  border-radius: 10px;
+  font-size: 15px;
+  outline: none;
+  transition: 0.3s;
+  box-sizing: border-box;
 }
 
 .input:focus {
-  border-color: var(--accent-green, #2f6b4f);
-  outline: none;
+  border-color: #2f6b4f;
 }
 
 .submit {
-  align-self: flex-start;
-  margin-top: 4px;
-  background: var(--ink, #1e2b28);
-  color: var(--paper, #f4f0e6);
+  width: fit-content;
+  padding: 14px 30px;
   border: none;
   border-radius: 999px;
-  padding: 12px 24px;
-  font-size: 13px;
+  background: #1e2b28;
+  color: white;
+  font-size: 15px;
   font-weight: 600;
-  transition:
-    background 0.15s ease,
-    transform 0.1s ease;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .submit:hover {
-  background: var(--accent-green, #2f6b4f);
+  background: #2f6b4f;
 }
 
-.submit:active {
-  transform: translateY(1px);
+.submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===========================
+   Tablet
+=========================== */
+
+@media (max-width: 992px) {
+  .card {
+    max-width: 100%;
+    padding: 22px;
+  }
+
+  .heading {
+    font-size: 1.8rem;
+  }
+}
+
+/* ===========================
+   Mobile
+=========================== */
+
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+    max-width: 100%;
+    min-width: unset;
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .row {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .field {
+    width: 100%;
+  }
+
+  .label {
+    font-size: 15px;
+  }
+
+  .input {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+  }
+
+  .submit {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+  }
+
+  .heading {
+    font-size: 34px;
+  }
+}
+
+/* ===========================
+   Small Phones
+=========================== */
+
+@media (max-width: 480px) {
+  .card {
+    padding: 18px;
+  }
+
+  .heading {
+    font-size: 2rem;
+  }
+
+  .input {
+    padding: 13px;
+  }
+
+  .submit {
+    padding: 14px;
+  }
 }
