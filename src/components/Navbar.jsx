@@ -1,6 +1,14 @@
+import { useContext } from "react";
 import styles from "./Navabar.module.css";
-
+import { ExpenseContext } from "../context/ExpenseContext";
 export const Navbar = () => {
+  const { state } = useContext(ExpenseContext);
+
+  let total = state.allExpenses.reduce(
+    (curr, item) => curr + Number(item.amount),
+    0,
+  );
+
   return (
     <>
       <header className={styles.navbar}>
@@ -32,7 +40,9 @@ export const Navbar = () => {
         <div className={styles.actions}>
           <div className={styles.stat}>
             <span className={styles.statLabel}>This month</span>
-            <span className={styles.statValue}>£0</span>
+            <span
+              className={styles.statValue}
+            >{`$${Math.floor(total.toFixed(2))}.00`}</span>
           </div>
 
           <button type="button" className={styles.iconBtn} aria-label="Search">
