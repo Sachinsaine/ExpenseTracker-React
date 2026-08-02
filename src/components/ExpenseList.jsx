@@ -2,8 +2,16 @@ import { useContext } from "react";
 import { ExpenseContext } from "../context/ExpenseContext";
 import styles from "./ExpenseList.module.css";
 import AlertDialog from "./AlertDialog"; // adjust the path
+import { UpdateDialog } from "./UpdateDialog";
 export const ExpenseList = () => {
-  const { state, dispatch, setOpen, setDeletedId } = useContext(ExpenseContext);
+  const {
+    state,
+    dispatch,
+    setOpen,
+    setDeletedId,
+    setUpdateDialog,
+    setUpdateExpense,
+  } = useContext(ExpenseContext);
 
   const getSelectedCategory =
     state.selectedCategory === "All"
@@ -25,6 +33,11 @@ export const ExpenseList = () => {
   const handleOpen = (expenseId) => {
     setDeletedId(expenseId);
     setOpen(true);
+  };
+
+  const openUpdateDialog = (updateId) => {
+    setUpdateExpense(updateId);
+    setUpdateDialog(true);
   };
 
   return (
@@ -86,7 +99,12 @@ export const ExpenseList = () => {
                 <span className={styles.category} data-category={item.category}>
                   {item.category}
                 </span>
-                <div className={styles.title}>{item.title}</div>
+                <div
+                  className={styles.title}
+                  onClick={() => openUpdateDialog(item.id)}
+                >
+                  {item.title}
+                </div>
                 <div className={styles.date}>{item.date}</div>
                 <div className={styles.amount}>{item.amount}</div>
                 <button
@@ -102,6 +120,7 @@ export const ExpenseList = () => {
         )}
       </ul>
       <AlertDialog open={handleOpen} />
+      <UpdateDialog open={openUpdateDialog} />
     </div>
   );
 };

@@ -1,0 +1,47 @@
+.paper {
+  background: var(--card, #fbf9f3) !important;
+  border-radius: 16px !important;
+}
+
+.mainCont {
+  padding: 24px 26px 20px;
+}
+
+.form {
+  min-width: 460px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 12px;
+  color: var(--ink-soft, #5a6a63);
+}
+
+.input {
+  border: 1px solid var(--line-strong, #c7bc9d);
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: #fff;
+  font-size: 14px;
+  color: var(--ink, #1e2b28);
+  font-family: var(--font-body, sans-serif);
+  transition: border-color 0.15s ease;
+}
+
+.input:focus {
+  border-color: var(--accent-green, #2f6b4f);
+  outline: none;
+}
+
+.actions {
+  padding: 4px 0 0 !important;
+}

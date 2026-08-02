@@ -55,6 +55,16 @@ const reducer = (state, action) => {
         sortByAmount: action.payload,
       };
 
+    case "UPDATE_EXPENSE":
+      return {
+        ...state,
+        allExpenses: [
+          ...state.allExpenses.map((expense) =>
+            expense.id === action.payload.id ? action.payload : expense,
+          ),
+        ],
+      };
+
     default:
       return state;
   }
@@ -63,14 +73,27 @@ const reducer = (state, action) => {
 export const ContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [open, setOpen] = useState(false);
+  const [updateDialog, setUpdateDialog] = useState(false);
   const [deleteId, setDeletedId] = useState(0);
+  const [updateExpense, setUpdateExpense] = useState(null);
 
   useEffect(() => {
     localStorage.setItem("expense", JSON.stringify(state.allExpenses));
   }, [state.allExpenses]);
   return (
     <ExpenseContext.Provider
-      value={{ state, dispatch, open, setOpen, deleteId, setDeletedId }}
+      value={{
+        state,
+        dispatch,
+        open,
+        setOpen,
+        deleteId,
+        setDeletedId,
+        updateDialog,
+        setUpdateDialog,
+        updateExpense,
+        setUpdateExpense,
+      }}
     >
       {children}
     </ExpenseContext.Provider>
