@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { ExpenseContext } from "../context/ExpenseContext";
 import styles from "./ExpenseList.module.css";
-import AlertDialog from "./AlertDialog"; // adjust the path
-import { UpdateDialog } from "./UpdateDialog";
+import { UpdateDialog as EditExpenseDialog } from "./UpdateDialog";
+import DeleteExpenseDialog from "./DeleteExpenseDialog";
 export const ExpenseList = () => {
   const {
     state,
@@ -108,7 +108,10 @@ export const ExpenseList = () => {
                 <button
                   type="button"
                   className={styles.delete}
-                  onClick={() => handleOpen(item.id)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleOpen(item.id);
+                  }}
                 >
                   ✕
                 </button>
@@ -117,8 +120,8 @@ export const ExpenseList = () => {
           })
         )}
       </ul>
-      <AlertDialog open={handleOpen} />
-      <UpdateDialog open={openUpdateDialog} />
+      <DeleteExpenseDialog open={handleOpen} />
+      <EditExpenseDialog open={openUpdateDialog} />
     </div>
   );
 };

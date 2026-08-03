@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { ExpenseContext } from "../context/ExpenseContext";
 
-export default function AlertDialog() {
+export default function DeleteExpenseDialog() {
   const { open, setOpen, dispatch, deleteId } =
     React.useContext(ExpenseContext);
 
