@@ -58,11 +58,9 @@ const reducer = (state, action) => {
     case "UPDATE_EXPENSE":
       return {
         ...state,
-        allExpenses: [
-          ...state.allExpenses.map((expense) =>
-            expense.id === action.payload.id ? action.payload : expense,
-          ),
-        ],
+        allExpenses: state.allExpenses.map((expense) => {
+          return expense.id === action.payload.id ? action.payload : expense;
+        }),
       };
 
     default:
@@ -75,7 +73,7 @@ export const ContextProvider = ({ children }) => {
   const [open, setOpen] = useState(false);
   const [updateDialog, setUpdateDialog] = useState(false);
   const [deleteId, setDeletedId] = useState(0);
-  const [updateExpense, setUpdateExpense] = useState(null);
+  const [selectedExpense, setSelectedExpense] = useState(null);
 
   useEffect(() => {
     localStorage.setItem("expense", JSON.stringify(state.allExpenses));
@@ -91,8 +89,8 @@ export const ContextProvider = ({ children }) => {
         setDeletedId,
         updateDialog,
         setUpdateDialog,
-        updateExpense,
-        setUpdateExpense,
+        selectedExpense,
+        setSelectedExpense,
       }}
     >
       {children}

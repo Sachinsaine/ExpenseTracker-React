@@ -10,7 +10,7 @@ export const ExpenseList = () => {
     setOpen,
     setDeletedId,
     setUpdateDialog,
-    setUpdateExpense,
+    setSelectedExpense,
   } = useContext(ExpenseContext);
 
   const getSelectedCategory =
@@ -35,8 +35,8 @@ export const ExpenseList = () => {
     setOpen(true);
   };
 
-  const openUpdateDialog = (updateId) => {
-    setUpdateExpense(updateId);
+  const openUpdateDialog = (id) => {
+    setSelectedExpense(id);
     setUpdateDialog(true);
   };
 
@@ -95,16 +95,14 @@ export const ExpenseList = () => {
         ) : (
           displayedExpenses.map((item) => {
             return (
-              <li className={styles.item}>
+              <li
+                className={styles.item}
+                onClick={() => openUpdateDialog(item)}
+              >
                 <span className={styles.category} data-category={item.category}>
                   {item.category}
                 </span>
-                <div
-                  className={styles.title}
-                  onClick={() => openUpdateDialog(item.id)}
-                >
-                  {item.title}
-                </div>
+                <div className={styles.title}>{item.title}</div>
                 <div className={styles.date}>{item.date}</div>
                 <div className={styles.amount}>{item.amount}</div>
                 <button

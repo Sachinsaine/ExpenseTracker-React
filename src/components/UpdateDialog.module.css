@@ -8,7 +8,7 @@
 }
 
 .form {
-  min-width: 460px;
+  /* min-width: 460px; */
   display: flex;
   flex-direction: column;
   gap: 16px;
