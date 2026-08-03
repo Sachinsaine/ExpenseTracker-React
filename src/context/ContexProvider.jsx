@@ -15,6 +15,7 @@ const initialState = {
   allExpenses: saveExpense,
   selectedCategory: "All",
   sortByAmount: "default",
+  searchExpense: "",
 };
 
 const reducer = (state, action) => {
@@ -53,6 +54,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         sortByAmount: action.payload,
+      };
+
+    case "SEARCH":
+      return {
+        ...state,
+        searchExpense: action.payload,
       };
 
     case "UPDATE_EXPENSE":

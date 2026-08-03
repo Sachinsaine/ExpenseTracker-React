@@ -39,7 +39,8 @@
   color: var(--ink-soft, #5a6a63);
 }
 
-.filterField select {
+.filterField select,
+input {
   border: 1px solid var(--line-strong, #c7bc9d);
   border-radius: 6px;
   padding: 8px 10px;
@@ -49,7 +50,8 @@
   min-width: 140px;
 }
 
-.filterField select:focus {
+.filterField select:focus,
+input:focus {
   border-color: var(--accent-green, #2f6b4f);
   outline: none;
 }
@@ -144,6 +146,10 @@
 @media (max-width: 640px) {
   .columns {
     display: none;
+  }
+  .filters {
+    flex-direction: column;
+    width: 100%;
   }
 
   .item {

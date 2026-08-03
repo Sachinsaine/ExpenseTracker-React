@@ -52,8 +52,6 @@ export const UpdateDialog = () => {
     }
   }, [selectedExpense, updateDialog]);
 
-  console.log(formData);
-
   return (
     <div className={styles.mainCont}>
       <Dialog

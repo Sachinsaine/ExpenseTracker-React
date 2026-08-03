@@ -25,7 +25,7 @@ export const Navbar = () => {
           </div>
         </a>
 
-        <nav className={styles.center}>
+        {/* <nav className={styles.center}>
           <div className={styles.links}>
             <button className={`${styles.link} ${styles.linkActive}`}>
               Dashboard
@@ -35,7 +35,7 @@ export const Navbar = () => {
 
             <button className={styles.link}>Reports</button>
           </div>
-        </nav>
+        </nav> */}
 
         <div className={styles.actions}>
           <div className={styles.stat}>

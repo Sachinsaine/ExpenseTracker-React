@@ -8,6 +8,7 @@ import {
   Button,
 } from "@mui/material";
 import { ExpenseContext } from "../context/ExpenseContext";
+import toast from "react-hot-toast";
 
 export default function DeleteExpenseDialog() {
   const { open, setOpen, dispatch, deleteId } =
@@ -18,11 +19,12 @@ export default function DeleteExpenseDialog() {
   };
 
   const handleAgree = () => {
-    (dispatch({
+    ((dispatch({
       type: "REMOVE_EXPENSE",
       payload: deleteId,
     }),
-      setOpen(false));
+    setOpen(false)),
+      toast.error("Expense has been deleted"));
   };
 
   return (

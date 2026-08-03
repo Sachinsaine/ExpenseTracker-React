@@ -40,11 +40,34 @@ export const ExpenseList = () => {
     setUpdateDialog(true);
   };
 
+  console.log(state.searchExpense);
+
+  const filterExpense = displayedExpenses.filter((expense) => {
+    return expense.title
+      .toLowerCase()
+      .includes(state.searchExpense.toLowerCase());
+  });
+
   return (
     <div className={styles.card}>
       <div className={styles.header}>
         <h2 className={styles.heading}>Entries</h2>
+
         <div className={styles.filters}>
+          <label htmlFor="" className={styles.filterField}>
+            <span>Search Expense</span>
+            <input
+              type="text"
+              style={{ padding: "6px" }}
+              placeholder="Seach expense..."
+              onChange={(e) =>
+                dispatch({
+                  type: "SEARCH",
+                  payload: e.target.value,
+                })
+              }
+            />
+          </label>
           <label className={styles.filterField}>
             <span>Category</span>
             <select
@@ -90,10 +113,10 @@ export const ExpenseList = () => {
       </div>
 
       <ul className={styles.items}>
-        {displayedExpenses.length === 0 ? (
+        {filterExpense.length === 0 ? (
           <h1 className={styles.empty}>No expenses found</h1>
         ) : (
-          displayedExpenses.map((item) => {
+          filterExpense.map((item) => {
             return (
               <li
                 className={styles.item}
