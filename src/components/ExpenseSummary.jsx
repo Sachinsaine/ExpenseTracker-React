@@ -67,6 +67,15 @@ export const ExpenseSummary = () => {
 
   const entries = state.allExpenses.length;
 
+  let highest = 0;
+  let highestCategory = "";
+  state.allExpenses.map((expense) => {
+    if (expense.amount > highest) {
+      highest = Number(expense.amount);
+      highestCategory = expense.category;
+    }
+  });
+
   return (
     <div className={styles.card}>
       <div className={styles.headline}>
@@ -156,7 +165,8 @@ export const ExpenseSummary = () => {
       </div>
 
       <p className={styles.note}>
-        Biggest category: <strong>Utilities</strong> at US$72.50
+        Biggest category: <strong> {highestCategory} </strong> at{" "}
+        {`USD$${highest.toFixed(2)}`}
       </p>
     </div>
   );
