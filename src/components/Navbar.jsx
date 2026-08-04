@@ -43,7 +43,7 @@ export const Navbar = () => {
             <span className={styles.statValue}>{`$${total.toFixed(2)}`}</span>
           </div>
 
-          <button type="button" className={styles.iconBtn} aria-label="Search">
+          {/* <button type="button" className={styles.iconBtn} aria-label="Search">
             <svg
               viewBox="0 0 24 24"
               fill="none"
@@ -66,7 +66,7 @@ export const Navbar = () => {
             </svg>
 
             <span>New Expense</span>
-          </button>
+          </button> */}
         </div>
       </header>
 
