@@ -28,7 +28,9 @@ export const Navbar = () => {
         <div className={styles.actions}>
           <div className={styles.stat}>
             <span className={styles.statLabel}>This month</span>
-            <span className={styles.statValue}>{`$${total.toFixed(2)}`}</span>
+            <span
+              className={styles.statValue}
+            >{`USD$${total.toFixed(2)}`}</span>
           </div>
         </div>
       </header>

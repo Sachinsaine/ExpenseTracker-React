@@ -63,14 +63,6 @@ h3 {
   margin: 0;
 }
 
-/* button,
-input,
-select {
-  font-family: inherit;
-  font-size: inherit;
-  color: inherit;
-} */
-
 button {
   cursor: pointer;
 }
@@ -80,7 +72,6 @@ button {
   outline-offset: 2px;
 }
 
-/* Category tint utility, shared across summary bars and list tags */
 [data-category="Food"] {
   --cat: var(--accent-rust);
   --cat-soft: var(--accent-rust-soft);
